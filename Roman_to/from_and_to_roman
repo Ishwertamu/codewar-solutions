@@ -1,0 +1,33 @@
+"""TODO: create a RomanNumerals helper object"""
+
+my_num =[1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+my_rom =['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+class RomanNumerals:
+
+  def to_roman(num):
+ 
+    rom = ''
+    i = 0
+    while num >0:
+      for _ in range(num//my_num[i]):
+        rom += my_rom[i]
+        num -= my_num[i]
+      i +=1
+    return rom    
+
+    
+        
+      
+  
+  def from_roman(s):
+      i = 0
+      num = 0
+
+      while i < len(s):
+        if i+1 <len(s) and s[i:i+2] in my_rom:
+          num += my_num[my_rom.index(s[i:i+2])]
+          i += 2
+        else:
+          num += my_num[my_rom.index(s[i])]  
+          i += 1
+      return num        
